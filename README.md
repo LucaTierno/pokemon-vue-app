@@ -1,5 +1,7 @@
 # pokemon-vue-app
 
+# Prueba tecnica para Electro3
+
 ## Project setup
 ```
 npm install
