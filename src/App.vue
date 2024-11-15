@@ -3,7 +3,7 @@
   import axios from 'axios';
   import PokedexPage from './pages/PokedexPage.vue';
   
-  const pokemons = ref(null);
+  const pokemons = ref([]);
   
   const fetchPokemons = async () => {
     try {
