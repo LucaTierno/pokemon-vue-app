@@ -3,6 +3,10 @@ import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import { defineProps, onMounted, ref, watch } from 'vue';
 import axios from 'axios';
+import Button from 'primevue/button';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const props = defineProps({
     pokemons: {
@@ -63,6 +67,15 @@ const fetchPokemonDetails = async () => {
     }
 };
 
+const navigateToPokemonDetails = (url) => {
+    const pokemonId = getIdFromUrl(url)
+    if (router && router.push) {
+        router.push({ name: 'PokemonDetails', params: { id: pokemonId } });
+    } else {
+        console.error('Router no está disponible o no tiene el método push.');
+    }
+};
+
 onMounted(() => {
     if (props.pokemons.length > 0) {
         fetchPokemonDetails();
@@ -107,6 +120,13 @@ watch(() => props.pokemons, (newPokemons) => {
                         {{ type }}
                     </span>
                 </div>
+            </template>
+        </Column>
+
+        <Column header="Detalles">
+            <template #body="slotProps">
+                <Button label="Ver" class="p-button-sm p-button-info"
+                    @click="navigateToPokemonDetails(slotProps.data.url)" />
             </template>
         </Column>
     </DataTable>
