@@ -19,7 +19,7 @@ const fetchPokemonDetails = async () => {
 };
 
 const goBack = () => {
-    router.push({ name: 'Home' });
+    router.push({ name: 'PokedexView' });
 };
 
 onMounted(fetchPokemonDetails);
@@ -28,7 +28,7 @@ onMounted(fetchPokemonDetails);
 <template>
     <div class="container mx-auto">
         <button @click="goBack" class="mb-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Volver a la lista
+            Volver a la Pokédex
         </button>
         <CardPokemon :pokemon="pokemon"/>
     </div>

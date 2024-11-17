@@ -70,7 +70,7 @@ const fetchPokemonDetails = async () => {
 const navigateToPokemonDetails = (url) => {
     const pokemonId = getIdFromUrl(url)
     if (router && router.push) {
-        router.push({ name: 'PokemonDetails', params: { id: pokemonId } });
+        router.push({ name: 'DetailsView', params: { id: pokemonId } });
     } else {
         console.error('Router no está disponible o no tiene el método push.');
     }
@@ -93,7 +93,7 @@ watch(() => props.pokemons, (newPokemons) => {
     <DataTable :value="pokemonDetails" tableStyle="min-width: 50rem">
         <template #header>
             <div class="flex flex-wrap items-center justify-between gap-2">
-                <span class="text-xl font-bold text-red-500">POKEDEX</span>
+                <span class="text-xl font-bold text-red-600">POKÉDEX</span>
             </div>
         </template>
 

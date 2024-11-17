@@ -1,17 +1,17 @@
+import DetailsView from '@/views/DetailsView.vue';
+import PokedexView from '@/views/PokedexView.vue';
 import { createRouter, createWebHistory } from 'vue-router';
-import PokedexPage from '@/pages/PokedexPage.vue';
-import DetailsPage from '@/pages/DetailsPage.vue';
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: PokedexPage
+    name: 'PokedexView',
+    component: PokedexView
   },
   {
     path: '/pokemon/:id',
-    name: 'PokemonDetails',
-    component: DetailsPage
+    name: 'DetailsView',
+    component: DetailsView
   }
 ];
 
