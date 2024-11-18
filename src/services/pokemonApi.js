@@ -1,11 +1,11 @@
 import axios from "axios";
 import { ref } from "vue";
 
-const pokemons = ref([]);
+export const pokemons = ref([]);
 
-export const fetchPokemons = async () => {
+export const fetchPokemons = async (number = 20) => {
   try {
-    const response = await axios.get('https://pokeapi.co/api/v2/pokemon/');
+    const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=${number}`);
     return pokemons.value = response.data.results;
   } catch (error) {
     console.error('Error al obtener los pokémones:', error);
