@@ -1,21 +1,12 @@
 <script setup>
-import { ref, onMounted } from 'vue';
-import axios from 'axios';
+import { onMounted, ref } from 'vue';
 import { RouterView } from 'vue-router';
+import { fetchPokemons } from './services/pokemonApi';
 
 const pokemons = ref([]);
 
-const fetchPokemons = async () => {
-  try {
-    const response = await axios.get('https://pokeapi.co/api/v2/pokemon/');
-    pokemons.value = response.data.results;
-  } catch (error) {
-    console.error('Error al obtener los pokémones:', error);
-  }
-};
-
-onMounted(() => {
-  fetchPokemons();
+onMounted(async () => {
+  pokemons.value = await fetchPokemons();
 });
 </script>
 

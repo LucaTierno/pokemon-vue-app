@@ -5,6 +5,7 @@ import { defineProps, onMounted, ref, watch } from 'vue';
 import axios from 'axios';
 import Button from 'primevue/button';
 import { useRouter } from 'vue-router';
+import { getTypeColor } from '@/utils/getTypeColor';
 
 const router = useRouter();
 
@@ -16,22 +17,6 @@ const props = defineProps({
 });
 
 const pokemonDetails = ref([]);
-
-const typeColors = {
-    normal: { bg: 'bg-gray-200', text: 'text-gray-800' },
-    fire: { bg: 'bg-red-500', text: 'text-white' },
-    water: { bg: 'bg-blue-500', text: 'text-white' },
-    grass: { bg: 'bg-green-500', text: 'text-white' },
-    fighting: { bg: 'bg-red-700', text: 'text-white' },
-    poison: { bg: 'bg-purple-500', text: 'text-white' },
-    flying: { bg: 'bg-indigo-400', text: 'text-white' },
-    bug: { bg: 'bg-green-400', text: 'text-white' },
-};
-
-const getTypeStyle = (type) => {
-    const typeStyle = typeColors[type.toLowerCase()] || typeColors.normal;
-    return `${typeStyle.bg} ${typeStyle.text}`;
-};
 
 const getIdFromUrl = (url) => {
     const segments = url.split('/');
@@ -52,7 +37,7 @@ const fetchPokemonDetails = async () => {
                         types: response.data.types.map((type) => type.type.name),
                     };
                 } catch (error) {
-                    console.error(`Error fetching details for Pokemon ${pokemon.name}:`, error);
+                    console.error(`Error al obtener los tipos de ${pokemon.name}:`, error);
                     return {
                         ...pokemon,
                         types: [],
@@ -116,7 +101,7 @@ watch(() => props.pokemons, (newPokemons) => {
             <template #body="slotProps">
                 <div>
                     <span v-for="(type, index) in slotProps.data.types" :key="index"
-                        :class="['rounded px-2 py-1 mr-1', getTypeStyle(type)]">
+                        :class="['rounded px-2 py-1 mr-1', getTypeColor(type)]">
                         {{ type }}
                     </span>
                 </div>
