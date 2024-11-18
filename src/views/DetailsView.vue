@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import CardPokemon from '@/components/CardPokemon.vue';
 import { fetchPokemonDetails } from '@/services/pokemonApi';
+import { Button } from 'primevue';
 
 const route = useRoute();
 const router = useRouter();
@@ -21,9 +22,7 @@ onMounted(async () => {
 
 <template>
     <div class="container mx-auto">
-        <button @click="goBack" class="mb-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Volver a la Pokédex
-        </button>
+        <Button @click="goBack" label="Volver a la Pokédex" class="p-button-info" icon="pi pi-angle-left"/>
         <CardPokemon :pokemon="pokemon" />
     </div>
 </template>

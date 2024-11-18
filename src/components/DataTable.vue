@@ -110,7 +110,7 @@ watch(() => props.pokemons, (newPokemons) => {
 
         <Column header="Detalles">
             <template #body="slotProps">
-                <Button label="Ver" class="p-button-sm p-button-info"
+                <Button label="Ver" class="p-button-sm p-button-info" icon="pi pi-angle-right" iconPos="right"
                     @click="navigateToPokemonDetails(slotProps.data.url)" />
             </template>
         </Column>
