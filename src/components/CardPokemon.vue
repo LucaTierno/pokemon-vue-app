@@ -13,7 +13,7 @@ defineProps({
 </script>
 
 <template>
-    <Card class="w-[25rem] m-auto">
+    <Card class="w-[20rem] md:w-[25rem] m-auto mt-5">
         <template #header>
             <img :src="pokemon?.sprites.other.dream_world.front_default" :alt="pokemon?.name"
                 class="w-full h-56 object-contain p-4" />

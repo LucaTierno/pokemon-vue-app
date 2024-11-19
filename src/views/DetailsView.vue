@@ -21,7 +21,7 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="container mx-auto">
+    <div class="my-10 mx-12">
         <Button @click="goBack" label="Volver a la Pokédex" class="p-button-info" icon="pi pi-angle-left"/>
         <CardPokemon :pokemon="pokemon" />
     </div>
