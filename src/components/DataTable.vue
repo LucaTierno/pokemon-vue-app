@@ -8,6 +8,7 @@ import Button from "primevue/button";
 import { useRouter } from "vue-router";
 import { getTypeColor } from "@/utils/getTypeColor";
 import DialogLoadPokemons from "./DialogLoadPokemons.vue";
+import capitalizeFirstLetter from "@/utils/capitalizeFirstLetter";
 
 const router = useRouter();
 const pokemonDetails = ref([]);
@@ -85,7 +86,11 @@ watch(pokemons, (newPokemons) => {
             </template>
         </Column>
 
-        <Column field="name" header="Nombre"></Column>
+        <Column field="name" header="Nombre">
+            <template #body="slotProps">
+                {{ capitalizeFirstLetter(slotProps.data.name) }}
+            </template>
+        </Column>
 
         <Column header="Tipos">
             <template #body="slotProps">
@@ -95,7 +100,7 @@ watch(pokemons, (newPokemons) => {
                         :key="index"
                         :class="['rounded px-2 py-1 mr-1', getTypeColor(type)]"
                     >
-                        {{ type }}
+                        {{ capitalizeFirstLetter(type) }}
                     </span>
                 </div>
             </template>
